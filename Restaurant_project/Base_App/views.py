@@ -5,12 +5,13 @@ def homeView(request):
     return render(request, 'home.html')
 
 def aboutView(request):
-    pass
+    return render(request, 'about.html')
 
 def menuView(request):
-    pass
+    return render(request, 'menu.html')
+
 def bookTableView(request):
-    pass
+    return render(request, 'book_table.html')
 
 
 
