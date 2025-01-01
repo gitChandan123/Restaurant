@@ -17,19 +17,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf import settings
-from Base_App.views import *
 from django.conf.urls.static import static
+from Base_App.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', homeView),
-    path('about', aboutView),
-    path('menu', menuView),
-    path('book_table', bookTableView),
-]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
+    path('', homeView,name="Home"),
+    path('book_table/', bookTableView,name='Book_Table'),
+    path('menu/', menuView,name='Menu'),
+    path('about/', aboutView,name='About'),
+    path('feedback/', feedbackView,name='Feedback_Form'),
+]
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-else:
-    urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
-    
+    urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
