@@ -3,9 +3,10 @@ from Base_App.models import BookTable,AboutUs,feedback,ItemList,Items
 
 # Create your views here.
 def homeView(request):
+    review = feedback.objects.all()
     items = Items.objects.all()
     list = ItemList.objects.all()
-    return render(request, 'home.html',{'items':items,'list':list})
+    return render(request, 'home.html',{'items':items,'list':list,'review':review})
 
 def aboutView(request):
     data = AboutUs.objects.all()
@@ -20,7 +21,8 @@ def bookTableView(request):
     return render(request, 'book_table.html')
 
 def feedbackView(request):
-    return render(request, 'feedback.html')
+    review = feedback.objects.all()
+    return render(request, 'feedback.html',{'review':review})
 
 
 

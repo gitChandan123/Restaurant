@@ -30,7 +30,6 @@
               </div>
             </div>
           </div>
-          {% comment "" %}
           <div class="carousel-item ">
             <div class="container ">
               <div class="row">
@@ -73,15 +72,14 @@
               </div>
             </div>
           </div>
-          {% endcomment %}
         </div>
         <div class="container">
           <ol class="carousel-indicators">
             <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
-            {% comment "" %}
+
             <li data-target="#customCarousel1" data-slide-to="1"></li>
             <li data-target="#customCarousel1" data-slide-to="2"></li>
-            {% endcomment %}
+
           </ol>
         </div>
       </div>
@@ -258,7 +256,7 @@
       <ul class="filters_menu">
         <li class="active" data-filter="*">All</li>
         {% for i in list %}
-        <li data-filter=".{{i.Category_name}}">{{i.Category_name}}</li>
+        <li data-filter=".{{i.category_name}}">{{i.category_name}}</li>
         {% endfor %}
       </ul>
 
@@ -280,7 +278,7 @@
                   </p>
                   <div class="options">
                     <h6>
-                      ${{j.Price}}
+                      ${{j.price}}
                     </h6>
                     <a href="">
                       <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
@@ -1042,17 +1040,17 @@
             <div class="box">
               <div class="detail-box">
                 <p>
-                  {{k.Description}}
+                  {{k.Message}}
                 </p>
                 <h6>
-                  {{k.User_name}}
+                  {{k.user_name}}
                 </h6>
                 <p>
                   Rating : {{k.Rating}}/5
                 </p>
               </div>
               <div class="img-box">
-                <img src="/media/{{k.Image}}" alt="{{k.Image}}" class="box-img">
+                <img src="/media/{{k.c_image}}" alt="{{k.c_image}}" class="box-img">
               </div>
             </div>
           </div>

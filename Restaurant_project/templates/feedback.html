@@ -7,59 +7,42 @@
 
   <!-- start feedback form -->
 
-  <section class="book_section layout_padding">
+   <!-- client section -->
+
+  <section class="client_section layout_padding-bottom">
     <div class="container">
-      <div class="heading_container">
+      <div class="heading_container heading_center psudo_white_primary mb_45">
         <h2>
-          Book A Table
+          What Says Our Customers
         </h2>
       </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form_container">
-            <form action="{% url "Book_Table" %}" method='POST'>{% csrf_token %}
-              <div>
-                <input type="text" class="form-control" name="user_name" required placeholder="Your Name" />
+      
+      <div class="carousel-wrap row ">
+        <div class="owl-carousel client_owl-carousel">
+          {% for k in review %}
+          <div class="item">
+            <div class="box">
+              <div class="detail-box">
+                <p>
+                  {{k.Message}}
+                </p>
+                <h6>
+                  {{k.user_name}}
+                </h6>
+                <p>
+                  Rating : {{k.Rating}}/5
+                </p>
               </div>
-              <div class="mb-3">
-                <textarea class="form-control" id="exampleFormControlTextarea1" name="Description" rows="3" required placeholder="Describe your experience here">
-
-                </textarea>
-                
+              <div class="img-box">
+                <img src="/media/{{k.c_image}}" alt="{{k.c_image}}" class="box-img">
               </div>
-              <div>
-                <select class="form-control nice-select wide" required name="total_person">
-                  <option value="" disabled selected>
-                    Please Give Us Rating?
-                  </option>
-                  <option value="1">
-                    1
-                  </option>
-                  <option value="2">
-                    2
-                  </option>
-                  <option value="3">
-                    3
-                  </option>
-                  <option value="4">
-                    4
-                  </option>
-                  <option value="5">
-                    5
-                  </option>
-                </select>
               </div>
-              <div>
-                <label for="formFileLg" class="form-label">Select Image</label>
-                <input class="form-control form-control-lg" id="formFileLg" type="file">
-              </div>
-              <div class="btn_box">
-                <button>
-                  Submit
-                </button>
               </div>
             </form>
+            </div>
+            </form>
           </div>
+          {% endfor %}
         </div>
       </div>
     </div>
