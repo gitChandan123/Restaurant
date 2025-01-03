@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 {% block home_status %}active{% endblock home_status %}
-
 {% load static %}
-
 {% block slider %}
 
     <!-- slider section -->
@@ -1040,13 +1038,13 @@
             <div class="box">
               <div class="detail-box">
                 <p>
-                  {{k.Message}}
+                  <h6>{{k.user_name}}</h6>
                 </p>
                 <h6>
-                  {{k.user_name}}
+                  Rating : {{k.Rating}}/5
                 </h6>
                 <p>
-                  Rating : {{k.Rating}}/5
+                  {{k.Message}}
                 </p>
               </div>
               <div class="img-box">

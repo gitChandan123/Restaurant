@@ -7,3 +7,4 @@ admin.site.register(Items)
 admin.site.register(AboutUs)
 admin.site.register(feedback)
 admin.site.register(BookTable)
+
