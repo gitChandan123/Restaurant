@@ -48,11 +48,11 @@ def loginView(request):
             # Authenticate and log the user in
             user = form.get_user()
             login(request, user)
-            messages.success(request, "Login successful!")
-            
+            if 'next' in request.POST:
+                next_url = request.POST.get('next')
             # Redirect to the 'next' URL after login
-            return redirect(next_url) # Redirect to the next URL after login  # Show error message if invalid form
-
+            else:
+                return redirect('feedback') # Redirect to the feedback page after login
     else:
         form = AuthenticationForm()  # Create an empty form if the request is not POST
 
