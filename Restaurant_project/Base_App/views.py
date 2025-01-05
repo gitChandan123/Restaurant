@@ -1,5 +1,11 @@
-from django.shortcuts import render
+from pyexpat.errors import messages
+from django.shortcuts import redirect, render
 from Base_App.models import BookTable,AboutUs,feedback,ItemList,Items
+from .forms import FeedbackForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login
+from django.urls import reverse
 
 # Create your views here.
 def homeView(request):
@@ -17,13 +23,38 @@ def menuView(request):
     list = ItemList.objects.all()
     return render(request, 'menu.html',{'items':items,'list':list})
 
-def bookTableView(request):
-    
+
+@login_required
+def bookTableView(request):    
     return render(request, 'book_table.html')
 
+
+@login_required
 def feedbackView(request):
-    review = feedback.objects.all()
-    return render(request, 'feedback.html',{'review':review})
+    return render(request, 'feedback.html')
 
+# View for login page
+def loginView(request):
+    next_url = request.GET.get('next', reverse('Feedback_Form'))  # Default to 'Feedback_Form' URL if no next param
 
+    # If the user is already logged in, redirect them to the next URL
+    if request.user.is_authenticated:
+        return redirect(next_url) # next_url is the URL to redirect to after login
 
+    # Handle form submission (POST request)
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            # Authenticate and log the user in
+            user = form.get_user()
+            login(request, user)
+            messages.success(request, "Login successful!")
+            
+            # Redirect to the 'next' URL after login
+            return redirect(next_url) # Redirect to the next URL after login  # Show error message if invalid form
+
+    else:
+        form = AuthenticationForm()  # Create an empty form if the request is not POST
+
+    # Render the login page with the form
+    return render(request, 'login.html', {'form': form})

@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block class %}class="login_page"{% endblock class %}
+
+{% block main %}
+<!-- Link to the styles (Place it in base.html if possible) -->
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<!-- Login Section -->
+<section class="login_section layout_padding">
+  <div class="container">
+    <div class="heading_container text-center">
+      <h2>Login</h2>
+      <p>Please enter your credentials to login.</p>
+    </div>
+    <div class="form_box">
+      <form method="post" class="login-form">
+        {% csrf_token %}
+        
+        <!-- Username Field -->
+        <div class="form-group">
+          <label for="{{ form.username.id_for_label }}" class="form-label">Username:</label>
+          <div class="input-container">
+            {{ form.username }} <!-- Render form input for username -->
+            {% if form.username.errors %}
+              <div class="error-messages">
+                {% for error in form.username.errors %}
+                  <p class="error-text">{{ error }}</p>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- Password Field -->
+        <div class="form-group">
+          <label for="{{ form.password.id_for_label }}" class="form-label">Password:</label>
+          <div class="input-container">
+            {{ form.password }} <!-- Render form input for password -->
+            {% if form.password.errors %}
+              <div class="error-messages">
+                {% for error in form.password.errors %}
+                  <p class="error-text">{{ error }}</p>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- Hidden next field to redirect back after login -->
+        {% if request.GET.next %}
+          <input type="hidden" name="next" value="{{ request.GET.next }}" />
+        {% endif %}
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+
+      <!-- Display Success/Error Messages -->
+      {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+            <li class="message {{ message.tags }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  </div>
+</section>
+<!-- End Login Section -->
+{% endblock main %}

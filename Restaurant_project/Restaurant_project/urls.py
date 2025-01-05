@@ -27,6 +27,7 @@ urlpatterns = [
     path('menu/', menuView,name='Menu'),
     path('about/', aboutView,name='About'),
     path('feedback/', feedbackView,name='Feedback_Form'),
+    path('login/', loginView,name='Login'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
