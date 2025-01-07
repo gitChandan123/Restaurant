@@ -1,12 +1,12 @@
 # Restaurant Web App
-
+![App Screenshot](Restaurant_project/images/screenshot.png)
 This is a comprehensive web application for a restaurant, developed using Django, HTML, and Jinja templates. The application allows customers to perform the following actions:
 
 - Register and log in to their accounts.
 - Browse and order various types of food, including pizza, burgers, fries, and pasta.
 - Book a table for dining at the restaurant.
 
-This project is hosted on GitHub: [Restaurant Web App](https://github.com/gitChandan123/Restaurant/tree/main)
+This project is hosted on GitHub: [Restaurant Web App](https://github.com/gitChandan123/Restaurant/tree/main
 
 ## Features
 
