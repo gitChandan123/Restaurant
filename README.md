@@ -1,3 +1,4 @@
+![App Screenshot](Restaurant_project/images/screenshot.png)
 # Restaurant Web App
 
 This is a comprehensive web application for a restaurant, developed using Django, HTML, and Jinja templates. The application allows customers to perform the following actions:
