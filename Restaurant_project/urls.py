@@ -23,13 +23,17 @@ from Base_App.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homeView,name="Home"),
+    # the below path is 
     path('book_table/', login_required(bookTableView, login_url='/login_register/'), name='Book_Table'),
+    path('book_table/',bookTableView,name='Book_Table'),
     path('menu/', menuView,name='Menu'),
     path('about/', aboutView,name='About'),
     path('feedback/', login_required(feedbackView, login_url='/login_register/'), name='Feedback_Form'),
+    path('feedback/',feedbackView,name='Feedback_Form'),
     path('login_register/', login_register,name='Login_Register'),
     path('login/', user_login,name='Login'),
     path('register/', user_register,name='Register'),
+    
     
 ]
 if settings.DEBUG:
