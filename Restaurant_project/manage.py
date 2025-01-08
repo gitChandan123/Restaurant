@@ -17,6 +17,19 @@ def main():
         ) from exc
     execute_from_command_line(sys.argv)
 
+import os
+
 
 if __name__ == '__main__':
     main()
+    port = int(os.getenv("PORT", 8000))  # Use the Render-assigned port, default to 8000 for local testing
+    execute_from_command_line(["manage.py", "runserver", f"0.0.0.0:{port}"])
+
+
+"""Start Command
+Render runs this command to start your app with each deploy - python manage.py runserver
+
+what wil be the Environment Variables for my project?
+Set environment-specific config and secrets (such as API keys), then read those values from your code.
+
+"""
