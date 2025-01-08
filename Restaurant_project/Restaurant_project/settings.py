@@ -25,8 +25,7 @@ SECRET_KEY = 'django-insecure-zzh+ly@)j_f-w$y-gwfff=#uj$_yppv%xbovfvusv#$%&!(bsb
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['Restaurant-13.onrender.com',]
 
 
 # Application definition
@@ -131,5 +130,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Configure where to store messages
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 # Allowed hosts
-
-ALLOWED_HOSTS = ['*']
