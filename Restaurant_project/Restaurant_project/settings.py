@@ -130,3 +130,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Configure where to store messages
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+# Allowed hosts
+
+ALLOWED_HOSTS = ['*']
