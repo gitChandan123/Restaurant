@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
 from pathlib import Path
 import os
 
@@ -25,7 +24,7 @@ SECRET_KEY = 'django-insecure-zzh+ly@)j_f-w$y-gwfff=#uj$_yppv%xbovfvusv#$%&!(bsb
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = [] # This will allow all hosts to access the app
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost'] # This will allow all hosts to access the app
 
 
 # Application definition
@@ -50,7 +49,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
 ]
-
 ROOT_URLCONF = 'Restaurant_project.urls'
 
 TEMPLATES = [
@@ -72,13 +70,22 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Restaurant_project.wsgi.application'
 
 
+AUTHENTICATION_BACEKNDS = [
+    'djano.contrib.auth.backends.ModelBackend',
+]
+
+
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'MyuserDB',  # Database name
+        'USER': 'postgres',  # Database user
+        'PASSWORD': '12345',  # Database password
+        'HOST': 'localhost',  # Database host
+        'PORT': '5433',  # PostgreSQL port
     }
 }
 
