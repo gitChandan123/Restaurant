@@ -1,6 +1,7 @@
 # forms.py
 from django import forms
 from Base_App.models import BookTable,feedback
+from django.contrib.auth.forms import UserCreationForm
 
 
 class FeedbackForm(forms.ModelForm):
@@ -13,3 +14,10 @@ class FeedbackForm(forms.ModelForm):
             'Message':forms.Textarea(attrs={'class':'form-control','placeholder':'Enter your Message'}),
             'c_image':forms.FileInput(attrs={'class':'form-control'}),
         }
+        
+class RegitsterForm(UserCreationForm):
+    email = forms.EmailField(required=False)
+    class Meta:
+        fields = ['username','email','password1','password2']
+        
+        

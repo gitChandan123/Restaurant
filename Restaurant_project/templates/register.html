@@ -2,30 +2,38 @@
 {% load static %}
 
 {% block main %}
-<!-- Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+<!-- Register Modal -->
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="loginModalLabel">Login</h5>
+        <h5 class="modal-title" id="registerModalLabel">Register</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form method="POST" action="{% url 'User_Login' %}">
+        <form method="POST" action="{% url 'User_Register' %}">
           {% csrf_token %}
           <div class="mb-3">
             <label for="username" class="form-label">Username</label>
             <input type="text" id="username" name="username" class="form-control" placeholder="Enter your username" required>
           </div>
           <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+          </div>
+          <div class="mb-3">
             <label for="password" class="form-label">Password</label>
             <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required>
           </div>
+          <div class="mb-3">
+            <label for="confirm_password" class="form-label">Confirm Password</label>
+            <input type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="Confirm your password" required>
+          </div>
           <div class="d-grid">
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-primary">Register</button>
           </div>
           <p class="mt-3">
-            Don't have an account? <a href="{% url 'User_Register' %}">Register</a>
+            Already have an account? <a href="{% url 'User_Login' %}">Login</a>
           </p>
         </form>
       </div>
@@ -42,22 +50,18 @@
   window.onload = function() {
     // Get the current URL
     var currentUrl = window.location.href;
-    console.log('Current URL:', currentUrl); // Debugging the URL
 
-    // List of URLs where the login modal should appear
-    var triggerUrls = ['/book_table/', '/feedback/'];
+    // List of URLs where the register modal should appear
+    var registerTriggerUrls = ['/register/'];
 
-    // Check if the current URL matches any of the trigger URLs
-    for (var i = 0; i < triggerUrls.length; i++) {
-      console.log('Checking URL:', triggerUrls[i]); // Debugging trigger URLs
-      if (currentUrl.includes(triggerUrls[i])) {
-        console.log('Triggering Modal for URL:', triggerUrls[i]); // Debugging modal trigger
-
+    // Check if the current URL matches any of the register trigger URLs
+    for (var i = 0; i < registerTriggerUrls.length; i++) {
+      if (currentUrl.includes(registerTriggerUrls[i])) {
         // Trigger the modal to show automatically
-        var myModal = new bootstrap.Modal(document.getElementById('loginModal'), {
+        var registerModal = new bootstrap.Modal(document.getElementById('registerModal'), {
           keyboard: false // Optional: Disable closing the modal with the keyboard
         });
-        myModal.show();
+        registerModal.show();
         break;
       }
     }

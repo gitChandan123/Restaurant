@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-zzh+ly@)j_f-w$y-gwfff=#uj$_yppv%xbovfvusv#$%&!(bsb
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['Restaurant-13.onrender.com',]
+ALLOWED_HOSTS = ['*',]
 
 
 # Application definition
@@ -70,7 +70,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Restaurant_project.wsgi.application'
-
+LOGIN_URL = 'login'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases

@@ -23,11 +23,12 @@ from Base_App.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homeView,name="Home"),
-    path('book_table/', bookTableView,name='Book_Table'),
+    path('book_table/', login_required(bookTableView), name='Book_Table'),
     path('menu/', menuView,name='Menu'),
     path('about/', aboutView,name='About'),
-    path('feedback/', feedbackView,name='Feedback_Form'),
-    path('login/', loginView,name='Login'),
+    path('feedback/', login_required(feedbackView), name='Feedback_Form'),
+    path('login/',user_login, name="User_Login"),
+    path('register/', user_register,name="User_Register"),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
