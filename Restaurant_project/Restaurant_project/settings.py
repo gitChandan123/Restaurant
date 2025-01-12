@@ -77,10 +77,15 @@ LOGIN_URL = 'login'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'MyuserDB',
+        'USER': 'postgres',
+        'PASSWORD': '12345',
+        'HOST': 'localhost',  # or the IP address of the PostgreSQL server
+        'PORT': '5433',       # Default PostgreSQL port
     }
 }
+
 
 
 # Password validation

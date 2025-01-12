@@ -1,1 +1,17 @@
 .DS_Store
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+.venv/
+
+# Django SQLite database
+db.sqlite3
+
+# Media files
+media/
+
+# Logs
+*.log
